@@ -32,7 +32,16 @@ class HashMap {
 
       get(key){
         const index = this.hash(key);
-        return this.table[index]
+        let ll = this.table[index];
+        console.log(ll.findValue(key))
+        ll.findValue(key);
+      }
+
+      has(key) {
+        const index = this.hash(key);
+        let ll = this.table[index];
+        console.log(ll.findKey(key))
+        ll.findKey(key);
       }
 
       delete(key){

@@ -21,6 +21,39 @@ class LinkedList {
 
     }
 
+    findKey(key) {
+
+        let current = this.head;
+        let counter = 1;
+
+        while (counter <= this.length) {
+            if(current.key == key) {
+                return true
+            }
+            current = current.next;
+            counter++
+        }
+
+        return null
+    }
+
+
+    findValue(key){
+        
+
+        let current = this.head;
+        let counter = 1
+
+        while(counter <= this.length) {
+            if(current.key == key){
+                return current.value
+            }
+            current = current.next;
+            counter++
+        }
+        
+    }
+
     toString() {
         let current = this.head;
         let counter = 1;
