@@ -46,7 +46,24 @@ class HashMap {
 
       delete(key){
         const index = this.hash(key);
-        this.table[index] = undefined
+        let ll = this.table[index];
+        if(ll.length === 1){
+            this.table[index] = undefined;
+            return
+         }
+        ll.removeKey(key);
+      }
+
+      length(){
+        let arrayLength = this.size;
+        let counter = 0;
+
+        for( let i = 0; i < arrayLength ; i++) {
+           if(this.table[i]){
+                counter += this.table[i].length;
+            }
+        }
+        return counter
       }
       
       display(){
@@ -55,6 +72,71 @@ class HashMap {
                 console.log(i, this.table[i]);
             }
         }
+      }
+
+      clear(){
+        for(let i = 0; i < this.table.length ; i++ ){
+            if(this.table[i]){
+                this.table[i]=undefined;
+            }
+        }
+      }
+
+      keys(){
+        let keyArray = [];
+
+        for(let i = 0 ; i < this.table.length ; i++ ) {
+            if(this.table[i]){
+                let tableLL = this.table[i]
+                let current = tableLL.head;
+                let counter = 1;
+
+                while(counter <= tableLL.length){
+                    keyArray.push(current.key)
+                    current = current.next;
+                    counter++
+                }
+            }
+        }
+        return keyArray
+      }
+
+      values(){
+        let valueArray = [];
+
+        for(let i = 0 ; i < this.table.length ; i++ ) {
+            if(this.table[i]){
+                let tableLL = this.table[i]
+                let current = tableLL.head;
+                let counter = 1;
+
+                while(counter <= tableLL.length){
+                    valueArray.push(current.value)
+                    current = current.next;
+                    counter++
+                }
+            }
+        }
+        return valueArray
+      }
+
+      entries(){
+        let entriesArray = [];
+
+        for(let i = 0 ; i < this.table.length ; i++ ) {
+            if(this.table[i]){
+                let tableLL = this.table[i]
+                let current = tableLL.head;
+                let counter = 1;
+
+                while(counter <= tableLL.length){
+                    entriesArray.push(`[${current.key}, ${current.value}]`)
+                    current = current.next;
+                    counter++
+                }
+            }
+        }
+        return entriesArray
       }
 }
 

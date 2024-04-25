@@ -68,6 +68,25 @@ class LinkedList {
         linkedListString = linkedListString.concat(" null")
         return linkedListString;
     }
+
+    removeKey(key){
+
+        let current = this.head;
+        let prev = null;
+        let counter = 1;
+
+        while(counter <= this.length){
+            if(current.key == key) {
+                prev.next = current.next;
+                this.length--;
+                return
+            }
+            prev = current;
+            current = current.next;
+            counter++
+        }
+
+    }
 }
 
 class Node {
